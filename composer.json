@@ -1,5 +1,5 @@
 {
-    "name": "hubtel/general-services-sdk-php",
+    "name": "hubtel-gh/general-services-sdk-php",
     "description": "Framework to use hubtel ussd system.",
     "keywords": ["template", "composer", "package", "ussd", "hubtel"],
     "license": "proprietary",
