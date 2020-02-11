@@ -1,0 +1,24 @@
+{
+    "name": "hubtel1/php-ussd-sdk",
+    "description": "Framework to use hubtel ussd system.",
+    "keywords": ["template", "composer", "package", "ussd", "hubtel"],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "HUBTEL",
+            "email": "support@hubtel.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=7.1"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "HubtelUssdFramework\\": "src/"
+        }
+    }
+}
