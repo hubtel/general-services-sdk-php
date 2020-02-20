@@ -21,7 +21,7 @@ Take your time to understand how Hubtel Programmable Services works. https://dev
 ## Installation
 
 **1 Require Composer** 
-PHP General Services Framework (https://github.com/hubtel/general-services-sdk-php) can smoothly run on newer PHP versions. The Hubtel Programmable Services PHP SDK can be installed with Composer. Run this command:
+PHP General Services Framework https://github.com/hubtel/general-services-sdk-php can smoothly run on newer PHP versions. The Hubtel Programmable Services PHP SDK can be installed with Composer. Run this command:
 
 ```bash
 $ composer require hubtel-gh/general-services-sdk-php
@@ -29,11 +29,14 @@ $ composer require hubtel-gh/general-services-sdk-php
 #OR Clone the repository unto your machine/server, then navigate into the project.
 
 **2 Create Session Storage with Redis**
+```php
 Implements Redis Store from \HubtelUssdFramework\SessionStore, Configure accordingly.
 
 'scheme' => $_ENV[''],
 'host'   => $_ENV[''],
 'port'   => $_ENV['']
+
+```
 
 **3 Define the applications settings and in Index.php file**
 ```php
