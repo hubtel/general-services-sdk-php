@@ -77,6 +77,11 @@ class UssdResponse
      */
     private $_data;
 
+    /**
+     * @var addTocart
+     */
+    private $_addToCart;
+
 
 
     /**
@@ -206,7 +211,8 @@ class UssdResponse
                 "label" => $instance->getLabel(),
                 "dataType" => $instance->getDataType(),
                 "fieldType" => $instance->getFieldType(),
-                'data' => $instance->getData()
+                'data' => $instance->getData(),
+                'addToCart' => $instance->getAddToCart()
         );
         $json = json_encode($arr);
         return $json;
@@ -272,6 +278,11 @@ class UssdResponse
         return $this->_fieldType;
     }
 
+    function getAddToCart()
+    {
+        return $this->_addToCart;
+    }
+
     function getData()
     {
         return $this->_data;
@@ -290,21 +301,22 @@ class UssdResponse
 
 
 
-    public static function Render($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null)
+    public static function Render($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null, $addToCart=null)
     {
-        return !($dataItems || $cartItem || $label || $dataType || $fieldType) ? self::RenderMessageOnly($message, $nextRoute) : self::RenderMessageWithList($message, $nextRoute, $dataItems, $cartItem, $label, $dataType, $fieldType, $sessionId, $mask, $maskNextRoute, $serviceCode);
+        return !($dataItems || $cartItem || $label || $dataType || $fieldType) ? self::RenderMessageOnly($message, $nextRoute) : self::RenderMessageWithList($message, $nextRoute, $dataItems, $cartItem, $label, $dataType, $fieldType, $sessionId, $mask, $maskNextRoute, $serviceCode, $addToCart);
     }
 
-    private static function RenderMessageOnly($message, $nextRoute = null)
+    private static function RenderMessageOnly($message, $nextRoute = null, $addToCart)
     {
         $response = new self;
         $response->_type = $nextRoute ? self::RESPONSE_TYPE_RESPONSE : self::RESPONSE_TYPE_RELEASE;
         $response->_message = $message;
         $response->_nextRoute = $nextRoute;
+        $response->_addToCart = $addToCart;
         return $response;
     }
 
-    private static function RenderMessageWithList($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null)
+    private static function RenderMessageWithList($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null, $addToCart = null)
     {
         $response = new self;
         $response->_sessionId = $sessionId;
@@ -319,6 +331,7 @@ class UssdResponse
         $response->_dataType = $dataType;
         $response->_data = $dataItems;
         $response->_fieldType = $fieldType;
+        $response->_addToCart = $addToCart;
         return $response;
     }
 
