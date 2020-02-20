@@ -51,7 +51,7 @@ storageType - # RedisStore
 Sample 
 
 ```bash
-    Ussd::process('./general.log', new RedisStore(), 'AppName', 'AppClassName', 'start', $_ENV['SERVER']);
+    Ussd::process('./general.log', new RedisStore(), 'USSDApp', 'USSDMain', 'start', $_ENV['SERVER']);
 ```
 
 ## Usage
