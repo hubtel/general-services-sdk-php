@@ -37,14 +37,16 @@ Implements Redis Store from \HubtelUssdFramework\SessionStore, Configure accordi
 
 **3 Define the applications settings and in Index.php file**
 ```php
-Ussd::process('logger file', 'RedisStore', 'USSDApp', 'USSDApp', 'Main startup method/action for the USSD('start')', 'server');
+Ussd::process('logger file', 'RedisStore', 'USSDApp', 'USSDMain', 'Main startup method/action for the USSD('start')', 'server');
 
-USSDApp - the folder that contains all your ussd applications logic
-start - the main action/function/method of your ussd logic 
-storageType -RedisStore
-'./general.log' - path to your logger file
+USSDApp - # the folder that contains all your ussd applications logic
+USSDMain - # the main controller/class of your ussd logic
+start - # the main action/function/method of your ussd logic 
+storageType - # RedisStore
+'./general.log' - # path to your logger file
 ```
 Sample 
+
 ```bash
     Ussd::process('./general.log', new RedisStore(), 'AppName', 'AppClassName', 'start', $_ENV['SERVER']);
 ```
@@ -54,6 +56,55 @@ Run the script using the following command
 ```bash
 $ php -S (Server address)
 ```
+## Demo 
+```php
+...
+    
+    # Main startup method/action for the USSD initiates the USSD session
+    public function start()
+    {
+        $menu = new \UssdFramework\UssdMenu();
+        $menu->header($this->_header)
+                ->createAndAddItem('List Items', 'list_items')
+                ->createAndAddItem('Exit', 'close', 'Main');
+        return $this->renderMenu($menu);
+    }
+
+     public function list_items()
+    {$menuHeader = 'Menu Header';
+
+        $menu = new \UssdFramework\UssdMenu();
+        $menu->header($menuHeader)
+                ->createAndAddItem('Sunday', 'e_menu')
+                ->createAndAddItem('Monday', 'e_menu')
+                ->createAndAddItem('Tuesday', 'e_menu')
+                ->createAndAddItem('Wednesday', 'e_menu')
+                ->createAndAddItem('Thurday', 'e_menu')
+                ->createAndAddItem('Friday', 'e_menu')
+                ->createAndAddItem('Saturday', 'e_menu')
+                ->addItem(new \UssdFramework\UssdMenuItem('0', 'Back', 'e_menu'));
+
+        return $this->renderMenu($menu);
+    }
+
+    # display the menu
+    public function e_menu(){
+
+        return $this->redirect('start');
+    }
+
+     # Close user's USSD session
+    public function close()
+    {
+        # closing message
+        $message = "$this->_header \n\nThank you for using our USSD service";
+        return $this->render($message);
+    }
+...
+
+```
+
+
 
 ## Development Environment Setup
 1. Install [Docker](https://hub.docker.com)
