@@ -1,22 +1,19 @@
 # HUBTEL GENERAL SERVICES SDK PHP
 
 ## Introduction 
-This is a simple Framework for building Ussd applications in PHP against the [Hubtel Programmable Services](https://developers.hubtel.com/reference#sample-general-services-interaction).
+This is a Framework for building Ussd applications in PHP against the [Hubtel Programmable Services](https://developers.hubtel.com/reference#sample-general-services-interaction).
 
 This project is ported from the [original C# version](https://github.com/hubtel/ussd-framework) and [USSD Framework in PHP](https://github.com/McAngelo/php-ussd-framework).
 
 ## Purpose
 There are ways to integrate with the [Hubtel Programmable Services](https://developers.hubtel.com/reference#sample-general-services-interaction) across programming languages. This project is particularly to integrate with PHP.
 
-Take your time to understand how Hubtel Programmable Services works. https://developers.hubtel.com/reference#general-services
+## Specifications 
 
-## Main specs
-
-- Designed with PHP's object oriented architecture
-- Simple application configuration settings
+- Application configuration settings
+- PHP object oriented architecture
 - Session storage Redis store or any RDMS
-- Simple standards for development
-- Use of [HTTPFul](http://phphttpclient.com/) for making API request
+- Standards for development
 
 ## Installation
 
@@ -28,13 +25,13 @@ $ composer require hubtel-gh/general-services-sdk-php
 ```
 #OR Clone the repository unto your machine/server, then navigate into the project.
 
-**2 Create Session Storage with Redis**
-```php
-Implements Redis Store from \HubtelUssdFramework\SessionStore, Configure accordingly.
+**2 Create Session Storage with Redis or any RDMS**
+For Redis, Create a Redis Store implementing \HubtelUssdFramework\SessionStore, Configure accordingly.
 
-'scheme' => $_ENV[''],
-'host'   => $_ENV[''],
-'port'   => $_ENV['']
+```php
+'scheme' => '',
+'host'   => '',
+'port'   => ''
 
 ```
 
