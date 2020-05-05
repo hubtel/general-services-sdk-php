@@ -528,10 +528,7 @@ class Ussd
                 $request,
                 $this->_controllerNamespaces
             );
-            if (!strcasecmp(
-                $request->getType(),
-                UssdRequest::REQUEST_TYPE_INITIATION
-            )) {
+            if (!strcasecmp($request->getType(), UssdRequest::REQUEST_TYPE_INITIATION) || !strcasecmp($request->getType(), UssdRequest::REQUEST_TYPE_QUERY)) {
                 if (!$this->_initiationController) {
                     throw new FrameworkException(
                         '"initiationController" property cannot '

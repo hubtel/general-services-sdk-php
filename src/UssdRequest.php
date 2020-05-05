@@ -23,6 +23,11 @@ class UssdRequest
      * @var string
      */
     const REQUEST_TYPE_RESPONSE = "Response";
+    
+    /**
+     * @var string
+     */
+    const REQUEST_TYPE_QUERY = "Query";
 
     /**
      * @var string

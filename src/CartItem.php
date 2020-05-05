@@ -2,7 +2,8 @@
 
 namespace HubtelUssdFramework;
 
-class CartItem {
+class CartItem
+{
 
     public $itemName;
 
@@ -10,10 +11,13 @@ class CartItem {
 
     public $price;
 
-    public function __construct($itemName, $qty, $price)
+    public $serviceData;
+
+    public function __construct($itemName, $qty, $price, $serviceData = null)
     {
         $this->itemName = $itemName;
         $this->qty = $qty;
         $this->price = $price;
+        $this->serviceData = $serviceData;
     }
 }
