@@ -2,18 +2,19 @@
 
 namespace HubtelUssdFramework;
 
-class ServiceData {
+class ServiceData
+{
 
-    public $destination;
+    public $Destination;
 
-    public $amount;
+    public $Amount;
 
-    public $selectedData;
+    public $bundle;
 
-    public function __construct($destination, $amount, $selectedData)
+    public function __construct($Destination, $Amount, $bundle)
     {
-        $this->destination = $destination;
-        $this->amount = $amount;
-        $this->selectedData = $selectedData;
+        $this->Destination = $Destination;
+        $this->Amount = $Amount;
+        $this->bundle = $bundle;
     }
 }
