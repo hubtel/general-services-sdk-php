@@ -301,7 +301,7 @@ class UssdResponse
 
 
 
-    public static function Render($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null, $addToCart=null)
+    public static function Render($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = false, $maskNextRoute = null, $serviceCode = null, $addToCart=null)
     {
         return !($dataItems || $cartItem || $label || $dataType || $fieldType) ? self::RenderMessageOnly($message, $nextRoute) : self::RenderMessageWithList($message, $nextRoute, $dataItems, $cartItem, $label, $dataType, $fieldType, $sessionId, $mask, $maskNextRoute, $serviceCode, $addToCart);
     }
@@ -316,7 +316,7 @@ class UssdResponse
         return $response;
     }
 
-    private static function RenderMessageWithList($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = null, $maskNextRoute = null, $serviceCode = null, $addToCart = null)
+    private static function RenderMessageWithList($message, $nextRoute = null, $dataItems = null, $cartItem = null, $label = null, $dataType = null, $fieldType = '', $sessionId = null, $mask = false, $maskNextRoute = null, $serviceCode = null, $addToCart = null)
     {
         $response = new self;
         $response->_sessionId = $sessionId;
