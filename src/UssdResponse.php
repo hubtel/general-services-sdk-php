@@ -336,12 +336,13 @@ class UssdResponse
     }
 
 
-    public static function AddToCart($message,  $data = '', $sessionId = null, $nextRoute = null)
+    public static function AddToCart($message,  $data = '', $sessionId = null, $nextRoute = null, $mask = false)
     {
         $response = new self;
         $response->_sessionId = $sessionId;
         $response->_type = $nextRoute ? self::RESPONSE_TYPE_RELEASE : self::RESPONSE_TYPE_ADDTOCART;
         $response->_message = $message;
+        $response->_mask = $mask;
         $response->_item = $data;
         $response->_data = [];
         $response->_dataType = DataType::DISPLAY;
