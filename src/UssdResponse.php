@@ -306,7 +306,7 @@ class UssdResponse
         return !($dataItems || $cartItem || $label || $dataType || $fieldType) ? self::RenderMessageOnly($message, $nextRoute) : self::RenderMessageWithList($message, $nextRoute, $dataItems, $cartItem, $label, $dataType, $fieldType, $sessionId, $mask, $maskNextRoute, $serviceCode, $addToCart);
     }
 
-    private static function RenderMessageOnly($message, $nextRoute = null, $addToCart)
+    private static function RenderMessageOnly($message, $nextRoute = null, $addToCart = null)
     {
         $response = new self;
         $response->_type = $nextRoute ? self::RESPONSE_TYPE_RESPONSE : self::RESPONSE_TYPE_RELEASE;

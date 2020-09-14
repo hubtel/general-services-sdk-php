@@ -61,7 +61,8 @@ class UssdController {
         // Retrieve any form data existing from previous ussd screens,
         // for use by current route
         $repr = $this->_dataBag->get(self::FORM_DATA_KEY);
-        $this->_formData = json_decode($repr, true);
+        $this->_formData = !empty($repr) ? json_decode($repr, true) : [];
+
     }
 
     /**
